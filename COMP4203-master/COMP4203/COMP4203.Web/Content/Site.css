@@ -1,0 +1,95 @@
+﻿@media screen and (max-width: 600px) {
+	body {
+		display: none;
+	}
+
+	html:before {
+		content: "Your viewport needs to have a width of greater than 600px to run this application.";
+	}
+}
+
+.test-class {
+	font-weight: 800;
+	color: #FF0000;
+}
+
+.navbar-header {
+	width: 100%;
+}
+
+.navbar-default .navbar-text {
+	padding-left: 15px;
+}
+
+.main {
+	height: 100%;
+	width: 100%;
+}
+
+.panel, .panel-heading, .panel-body {
+	-ms-border-radius: 0;
+	border-radius: 0;
+}
+
+.panel-heading {
+	font-weight: 800;
+}
+
+html, body {
+	background-color: lightblue;
+}
+
+.session-container {
+	width: 100%;
+	height: 100%;
+}
+
+.session-graphics-container {
+	width: 500px;
+	height: 500px;
+	margin: 20px auto;
+	background-color: aliceblue;
+}
+
+.session-modifications-container {
+	padding: 20px;
+}
+
+	.session-modifications-container div {
+		margin: 20px;
+	}
+
+.legend {
+	list-style: none;
+}
+
+.legend li {
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	bottom: 5px;
+}
+
+.legend span {
+	border: 1px solid #ccc;
+	float: left;
+	width: 12px;
+	height: 12px;
+	margin: 2px;
+}
+
+.legend .rreq_colour {
+	background-color: #9bc146;
+}
+
+.legend .rrep_colour {
+	background-color: #ffe338;
+}
+
+.legend .data_colour {
+	background-color: #52a0d0;
+}
+
+.legend .ack_colour {
+	background-color: #df1313;
+}

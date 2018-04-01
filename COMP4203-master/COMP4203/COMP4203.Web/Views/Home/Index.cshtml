@@ -1,0 +1,243 @@
+﻿@{
+	ViewBag.Title = "COMP4203 Group Project";
+}
+
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="indexController">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+</head>
+<body class="view-wrapper">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#!/home">COMP4203 Group Project</a>
+				<p class="navbar-text navbar-right">Demonstrated & Developed in 2018 by James Tyler, Imdad Ali and Bradley Koon</p>
+			</div>
+		</div>
+	</nav>
+	<div class="main">
+		<uib-tabset active="active">
+			@{
+				var tabIndex = 0;
+			}
+			<uib-tab index="@tabIndex">
+				<uib-tab-heading>
+					<i class="glyphicon glyphicon-play-circle"></i> DSR Session
+				</uib-tab-heading>
+				<div>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">Session</div>
+						<div class="session-container">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+								<div class="panel panel-primary">
+									<div class="panel-heading text-center">Graphical Representation</div>
+									<div class="session-graphics-container">
+										<canvas id="canvas_@tabIndex" width="500" height="500">
+											Your browser does not support the canvas element.
+										</canvas>
+									</div>
+									<div class="panel-footer">
+										<ul class="legend">
+											<li>Packet Legend: </li>
+											<li><span class="rreq_colour"></span> RREQ</li>
+											<li><span class="rrep_colour"></span> RREP</li>
+											<li><span class="data_colour"></span> DATA</li>
+											<li><span class="ack_colour"></span> ACK</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="panel panel-success">
+									<div class="panel-heading text-center">Modifications</div>
+									<div class="session-modifications-container">
+										<div class="input-group">
+											<span class="input-group-addon"># of Nodes</span>
+											<input ng-model="runData.nodeNumber" type="number" class="form-control" placeholder="# of Nodes">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon"># of Messages</span>
+											<input ng-model="runData.messageNumber" type="number" class="form-control" placeholder="# of Messages">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Event Sim Speed (ms)</span>
+											<input ng-model="runData.simSpeedNumber" type="number" class="form-control" placeholder="Event Sim Speed #">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Node Range # (px)</span>
+											<input ng-model="runData.nodeRange" type="number" class="form-control" placeholder="Node Range #">
+										</div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-primary" ng-click="initiateRun(@tabIndex);">RUN</button>
+											<button type="button" class="btn btn-danger" ng-click="reset(@tabIndex);">RESET</button>
+											<button type="button" class="btn btn-info" ng-click="runDemo(@tabIndex);">DEMO</button>
+											<button type="button" class="btn btn-warning" ng-click="runTest(@tabIndex);">TEST</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</uib-tab>
+			@{
+				tabIndex = 1;
+			}
+			<uib-tab index="@tabIndex">
+				<uib-tab-heading>
+					<i class="glyphicon glyphicon-play-circle"></i> SA-DSR Session
+				</uib-tab-heading>
+				<div>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">Session</div>
+						<div class="session-container">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+								<div class="panel panel-primary">
+									<div class="panel-heading text-center">Graphical Representation</div>
+									<div class="session-graphics-container">
+										<canvas id="canvas_@tabIndex" width="500" height="500">
+											Your browser does not support the canvas element.
+										</canvas>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="panel panel-success">
+									<div class="panel-heading text-center">Modifications</div>
+									<div class="session-modifications-container">
+										<div class="input-group">
+											<span class="input-group-addon"># of Nodes</span>
+											<input ng-model="runData.nodeNumber" type="number" class="form-control" placeholder="# of Nodes">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon"># of Messages</span>
+											<input ng-model="runData.messageNumber" type="number" class="form-control" placeholder="# of Messages">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Event Sim Speed (ms)</span>
+											<input ng-model="runData.simSpeedNumber" type="number" class="form-control" placeholder="Event Sim Speed #">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Node Range # (px)</span>
+											<input ng-model="runData.nodeRange" type="number" class="form-control" placeholder="Node Range #">
+										</div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-primary" ng-click="initiateRun(@tabIndex);">RUN</button>
+											<button type="button" class="btn btn-danger" ng-click="reset(@tabIndex);">RESET</button>
+											<button type="button" class="btn btn-info" ng-click="runDemo(@tabIndex);">DEMO</button>
+											<button type="button" class="btn btn-warning" ng-click="runTest(@tabIndex);">TEST</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</uib-tab>
+			@{
+				tabIndex = 2;
+			}
+			<uib-tab index="@tabIndex">
+				<uib-tab-heading>
+					<i class="glyphicon glyphicon-play-circle"></i> SA-DSR [Modified] Session
+				</uib-tab-heading>
+				<div>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">Session</div>
+						<div class="session-container">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+								<div class="panel panel-primary">
+									<div class="panel-heading text-center">Graphical Representation</div>
+									<div class="session-graphics-container">
+										<canvas id="canvas_@tabIndex" width="500" height="500">
+											Your browser does not support the canvas element.
+										</canvas>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="panel panel-success">
+									<div class="panel-heading text-center">Modifications</div>
+									<div class="session-modifications-container">
+										<div class="input-group">
+											<span class="input-group-addon"># of Nodes</span>
+											<input ng-model="runData.nodeNumber" type="number" class="form-control" placeholder="# of Nodes">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon"># of Messages</span>
+											<input ng-model="runData.messageNumber" type="number" class="form-control" placeholder="# of Messages">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Event Sim Speed (ms)</span>
+											<input ng-model="runData.simSpeedNumber" type="number" class="form-control" placeholder="Event Sim Speed #">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">Node Range # (px)</span>
+											<input ng-model="runData.nodeRange" type="number" class="form-control" placeholder="Node Range #">
+										</div>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-primary" ng-click="initiateRun(@tabIndex);">RUN</button>
+											<button type="button" class="btn btn-danger" ng-click="reset(@tabIndex);">RESET</button>
+											<button type="button" class="btn btn-info" ng-click="runDemo(@tabIndex);">DEMO</button>
+											<button type="button" class="btn btn-warning" ng-click="runTest(@tabIndex);">TEST</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</uib-tab>
+			@{
+				tabIndex = 3;
+			}
+			<uib-tab index="@tabIndex">
+				<uib-tab-heading>
+					<i class="glyphicon glyphicon-link"></i> Graphs
+				</uib-tab-heading>
+				<div>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">Graphs</div>
+						<div>
+
+						</div>
+					</div>
+				</div>
+			</uib-tab>
+			@{
+				tabIndex = 4;
+			}
+			<uib-tab index="@tabIndex">
+				<uib-tab-heading>
+					<i class="glyphicon glyphicon-screenshot"></i> Output
+				</uib-tab-heading>
+				<div>
+					<div class="panel panel-danger">
+						<div class="panel-heading text-center">Output Messages</div>
+						<ul class="list-group">
+							<li class="list-group-item" ng-show="outputMessages.length == 0">No output messages...</li>
+							<li class="list-group-item" ng-show="outputMessages.length == 0">You can open this tab in a new browser window/tab.</li>
+							<li class="list-group-item" ng-repeat="outputMessage in outputMessages"><b>{{ outputMessage.Tag }}</b> : {{ outputMessage.Message }}</li>
+						</ul>
+					</div>
+				</div>
+			</uib-tab>
+		</uib-tabset>
+	</div>
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/modernizr")
+<script src="~/signalr/hubs"></script>
+@Scripts.Render("~/Scripts/angularjs")
+@Scripts.Render("~/bundles/ui-bootstrap")
+@Scripts.Render("~/bundles/highcharts")
+@Scripts.Render("~/bundles/highcharts-ng")
+
+@Styles.Render("~/Content/css")
+</html>
